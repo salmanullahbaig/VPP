@@ -1,0 +1,26 @@
+{% extends 'page.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+    <div class="login-input" >
+      <h4 >Create an Account</h4>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+        <form method="post">
+          {% csrf_token %}
+
+          {% bootstrap_form form %}
+
+          <label for="register-note"><input type="checkbox" id="registercheck" name="registercheck" value="Yes"> By clicking Signup, you agree to our <a href="#">Terms</a> and you have read our <a href="#">Privacy Policy</a>.</label>
+          <button class="main-btn btn btn-success">Register <i class="fal fa-arrow-right"></i></button>
+            </div>
+        </form>
+
+
+{% endblock %}

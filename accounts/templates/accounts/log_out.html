@@ -1,0 +1,19 @@
+{% extends 'page.html' %}
+
+{% load i18n %}
+
+{% block contentpt %}
+    <h4 style="color:white;"> Logged out</h4>
+    <div class="login-input">
+      <p>
+          {% trans 'Thanks for spending some quality time with the site today.' %}
+      </p>
+      <p>
+          <a href="{% url 'accounts:log_in' %}" class="main-btn fal">Log in again  <i class="fal fa-arrow-right"> </i>  </a>
+      </p>
+      <br>
+          <a class="main-btn btn btn-success " href="{% url 'accounts:sign_up' %}" >Create Account <i class="fal fa-arrow-right"> </i> </a>
+            </div>
+
+
+{% endblock %}

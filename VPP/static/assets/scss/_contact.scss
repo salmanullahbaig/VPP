@@ -1,0 +1,122 @@
+
+
+
+/*===========================
+    15.CONTACT css 
+===========================*/
+
+
+
+
+.contact-area{
+	padding-top: 192px;
+	padding-bottom: 200px;
+	@media #{$xs} {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	& .section-title{
+		padding-bottom: 35px;
+		& p{
+			font-size: 18px;
+			color: #626978;
+			padding-top: 22px;
+			padding-bottom: 40px;
+			@media #{$lg} {
+				font-size: 16px;
+			}
+		}
+		& ul{
+			position: relative;
+			&::before{
+				position: absolute;
+				content: '';
+				left: 48%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				height: 38px;
+				width: 1px;
+				background: #d3d9e6;
+				@media #{$xs} {
+					display: none;
+				}
+			}
+			& li{
+				display: inline-block;
+				margin: 0 33px;
+				@media #{$xs} {
+					margin: 20px 0 0;
+
+				}
+				@media #{$sm} {
+					margin: 0 33px;
+				}
+				& a{
+					font-size: 18px;
+					font-weight: 500;
+					color: $heading-color;
+					@media #{$xs} {
+						font-size: 14px;
+					}
+					& img{
+						padding-right: 18px;
+						@media #{$xs} {
+							padding-right: 5px;
+						}
+					}
+				}
+				&:first-child{
+					margin-left: 0;
+				}
+				&:last-child{
+					margin-right: 0;
+					@media #{$xs} {
+						margin-left: 20px;
+					}
+				}
+			}
+		}
+	}
+	& .contact-box{
+		margin: 0 10px;
+		& .input-box{
+			margin-left: -10px;
+			margin-right: -10px;
+			& input{
+				width: 100%;
+				line-height: 55px;
+				padding-left: 30px;
+				background: $white;
+				border-radius: 4px;
+				border: 0;
+				color: #6c7381;
+				&::placeholder{
+					opacity: 1;
+					color: #6c7381;
+				}
+			}
+			& textarea{
+				width: 100%;
+				height: 150px;
+				resize: none;
+				padding-top: 15px;
+				padding-left: 30px;
+				background: $white;
+				border-radius: 4px;
+				border: 0;
+				color: #6c7381;
+				&::placeholder{
+					opacity: 1;
+					color: #6c7381;
+				}
+			}
+			& button{
+				margin-top: 20px;
+				box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1),inset 0px -1px 0px 0px rgba(0, 0, 0, 0.2);
+				border-bottom: 0;
+				border-radius: 4px;
+			}
+		}
+	}
+
+}

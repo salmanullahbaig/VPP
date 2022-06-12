@@ -1,0 +1,191 @@
+
+
+
+/*===========================
+    11.FUTURE ROADMAP css 
+===========================*/
+
+
+
+
+
+
+
+.future-roadmap-area{
+	padding-top: 192px;
+	padding-bottom: 195px;
+	position: relative;
+	background-size: 100% 100%;
+	z-index: 10;
+	@media ( min-width: 992px ) {
+		.container{ overflow-x: visible; }
+		.first-row{ position: relative;
+			&::before{ content: ""; display: block; position: absolute; top: 80px; right: -46px; width: 338px; height: 320px;
+				background: url(../images/shape/line.png) no-repeat; background-size: cover; z-index: 20;
+			}
+		}
+		.not-done{ &::after{ background-color: #0074dd !important; z-index: 21;  } &::before{ z-index: 100; } }
+		.half-done{ &::after{ background-color: #0074dd !important; } &::before{ z-index: 100; } }
+		.second-row{ position: relative ; top: 6px; 
+			&::before{ content: ""; display: block; position: absolute; top: 80px; left: -23px; width: 338px; height: 320px;
+				background: url(../images/shape/line01.png) no-repeat; background-size: cover; z-index: 100;
+			}
+		}
+		.third-row{ position: relative; top: 11px; }
+	}
+	@media ( max-width: 991.98px ) {
+		background-image: url(../images/future-roadmap-bg-phone.png) !important;
+		// .first-row,.second-row,.third-row{ margin-top: 0;
+		// 	> div{ position: relative; } 
+		// 	> div:nth-child(odd)::after{ content: ""; display: block; width: 2px; height: 100%; background-color: white;
+		// 		position: absolute; top: 42%;
+		// 	}
+		// 	> div:nth-child(even)::after{ content: ""; display: block; width: 2px; height: 100%; background-color: white;
+		// 		position: absolute; top: 42%; right: 3%;
+		// 	}
+		// }
+		.first-row,.second-row,.third-row{ margin-top: 0;
+			> div::after{ content: ""; width: 2px; height: 80px; background-color: white; display: block;
+				position: relative; margin: 40px auto 30px auto;
+			}
+			> div::before{ content: ""; width: 15px; height: 15px; border-radius: 50%; background-color: white;
+				display: block; position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+			}
+			> div > div{ margin-top: 0; }
+		}
+		.first-row{ position: relative; padding-top: 150px;
+			&::after{ content: ""; width: 2px; height: 80px; background-color: white; display: block;
+				position: absolute; top: 0; margin: 50px auto 10px auto;
+			}
+			&::before{ content: ""; width: 15px; height: 15px; border-radius: 50%; background-color: white;
+				display: block; position: absolute; top: 120px; left: 50%; transform: translateX(-50%);
+			}
+		}
+		.third-row{
+			> div:last-child::after, > div:last-child::before{ display: none; }
+		}
+	}
+	@media #{$md} {
+		background-size: cover;
+	}
+	@media #{$xs} {
+		background-size: 220% 100%;
+	}
+	@media #{$sm} {
+		background-size: cover;
+	}
+	& .future-roadmap-thumb{
+		position: absolute;
+		left: 0;
+		bottom: 120px;
+		z-index: -1;
+		@media #{$laptop} {
+			width: 25%;
+			bottom: 0;
+		}
+		@media #{$lg} {
+			width: 25%;
+		}
+		@media #{$md} {
+			width: 26%;
+			bottom: 0;
+		}
+		@media #{$xs} {
+			width: 50%;
+			bottom: -40px;
+			left: -20px;
+		}
+		@media #{$sm} {
+			width: 26%;
+			bottom: 0;
+		}
+	}
+	& .section-title{
+		padding-bottom: 52px;
+		@media #{$xs} {
+			padding-bottom: 20px;
+		}
+	}
+	& .future-roadmap-item{
+		position: relative;
+		& i{
+			position: absolute;
+			top: 37px;
+			right: -20px;
+			font-size: 30px;
+			color: $white;
+			@media #{$xs} {
+				right: 0;
+			}
+		}
+		&  span{
+			font-weight: 600;
+			color: $white;
+		}
+		& .title{
+			font-size: 24px;
+			font-weight: 500;
+			line-height: 28px;
+			color: $white;
+			padding-top: 55px;
+			position: relative;
+			@media #{$md} {
+				font-size: 22px;
+			}
+			@media #{$xs}{
+				padding-top: 0;
+			}
+			&::before{
+				position: absolute;
+				content: '';
+				left: 50%;
+				top: 20px;
+				height: 17px;
+				width: 17px;
+				background: $white;
+				border-radius: 50%;
+				transform: translateX(-50%);
+				@media #{$xs} {
+					display: none;
+				}
+			}
+			&::after{
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 27px;
+				height: 2px;
+				width: 112%;
+				background: $white;
+				border-radius: 0%;
+				@media #{$md} {
+					width: 100%;
+				}
+				@media #{$xs} {
+					width: 100%;
+					display: none;
+				}
+			}
+		}
+		& p{
+			font-size: 18px;
+			line-height: 28px;
+			color: $white;
+			padding: 28px 15px 0;
+			@media #{$lg} {
+				padding: 28px 0 0;
+			}
+			@media #{$md} {
+				padding: 28px 0 0;
+				font-size: 15px;
+			}
+			@media #{$xs} {
+				padding: 15px 15px 0;
+			}
+		}
+	}
+}
+
+
+
+

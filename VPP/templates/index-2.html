@@ -1,0 +1,1424 @@
+{% load static  %}
+{% load bootstrap4 %}
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>VPP </title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico'%}" type="image/png">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+
+    <!--====== Fontawesome css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/all.css'%}">
+
+    <!--====== nice select css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css'%}">
+
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/default.css'%}">
+
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+
+
+</head>
+
+<body>
+
+    <!--====== HEADER PART START ======-->
+
+    <header class="header-area">
+        <div class="header-nav">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="navigation">
+                            <nav class="navbar navbar-expand-lg navbar-light ">
+                                <a class="navbar-brand" href="index.html"><img src="{% static 'assets/images/logo.png' %}" alt=""></a> <!-- logo -->
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggler-icon"></span>
+                                    <span class="toggler-icon"></span>
+                                    <span class="toggler-icon"></span>
+                                </button> <!-- navbar toggler -->
+
+                                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                    <ul class="navbar-nav m-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="index.html">Home</a>
+
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="about-us.html">About</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Roadmap</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Team</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Faqs</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="contact-us.html">pages <i class="fal fa-angle-down"></i></a>
+                                            <ul class="sub-menu">
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-post.html">Blog Post</a></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div> <!-- navbar collapse -->
+
+
+
+                                {% if request.user.is_authenticated %}
+                                  <a class="main-btn"href="#blance" > {{request.user}} </a>
+                                   <a class="main-btn-2 main-btn"  href="{% url 'accounts:log_out' %}"> log out</a>
+
+                              {% else %}
+                                   <a class="main-btn" href="{% url 'accounts:log_in' %}">login</a>
+                                   <br/>
+                                   <!-- <a class="main-btn-2 main-btn" href="{% url 'accounts:sign_up' %}">signup</a> -->
+                                   <a class="main-btn-2 main-btn" href="{% url 'accounts:sign_up' %}">signup</a>
+                              {% endif %}
+
+
+                            </nav>
+                        </div> <!-- navigation -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--====== HEADER PART ENDS ======-->
+
+    <!--====== BANNER PART START ======-->
+
+    <section class="banner-area bg_cover d-block d-md-flex align-items-center" style="background-image: url('{% static "assets/images/banner-bg.png" %}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8">
+                    <div class="banner-content">
+                        <h1 class="title">Welcome to the VPP Platform of the future!</h1>
+                        <p>Standout from rest and setup a great Educations system.</p>
+                        <ul>
+                            <li><a class="main-btn" href="#">Refers</a></li>
+                            <li><a class="main-btn main-btn-2" href="#">Wallets</a></li>
+                        </ul>
+                        <span>Join us on  <a href="#"><i class="fab fa-facebook-square"></i> 21K</a><a href="#"><i class="fab fa-twitter"></i> 16K</a><a href="#"><i class="fab fa-linkedin"></i> 21K</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-thumb">
+            <img src="{% static 'assets/images/banner-thumb-2.png' %}" alt="thumb">
+        </div>
+    </section>
+
+    <!--====== BANNER PART ENDS ======-->
+
+    <!--====== ICO SALE PART START ======-->
+
+    <section class="ico-sale-area pt-100 pb-100">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-9">
+                    <div class="ico-sale-item">
+                        <h4 class="title">ICO sale ends in:</h4>
+                        <div class="ico-sale-flex d-block d-lg-flex align-items-center">
+                            <div class="ico-sale-time">
+                                <div id="simple_timer"></div>
+                            </div>
+                            <div class="ico-sale-raised">
+                                <h5 class="title">raised so far:</h5>
+                                <ul>
+                                    <li><i class="fab fa-ethereum"></i> 689811.59</li>
+                                    <li><i class="fab fa-bitcoin"></i> 65549.55</li>
+                                    <li><i class="fab fa-btc"></i> 46879.55</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ico-sale-btns ml-45 text-center mt-30">
+                        <a class="main-btn" href="#">join & buy tokens   <i class="fal fa-arrow-right"></i></a>
+                        <ul>
+                            <li><img src="{% static 'assets/images/icon/social-icon-1.png' %}" alt="icon"></li>
+                            <li><img src="{% static 'assets/images/icon/social-icon-2.png' %}" alt="icon"></li>
+                            <li><img src="{% static 'assets/images/icon/social-icon-3.png' %}" alt="icon"></li>
+                            <li><img src="{% static 'assets/images/icon/social-icon-4.png' %}" alt="icon"></li>
+                            <li><img src="{% static 'assets/images/icon/social-icon-5.png' %}" alt="icon"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== ICO SALE PART ENDS ======-->
+
+    <!--====== BENEFITS PART START ======-->
+
+    <section class="benefits-area pt-80 pb-90">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="benefits-title text-center">
+                        <span>Our benefits?</span>
+                        <h3 class="title">Why Choose VPP’s  Platform?</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="benefits-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="benefits-item-content">
+                            <h3 class="title">A Secure Platform for ICO and Cryptocurrency Trade</h3>
+                            <p>Pellentesque vestibulum fermentum velit non placerat aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit estibulum ante ipsum primis in faucibus.</p>
+                            <p class="text">Entesque vestibulum fermentum velit non placerat lese aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-thumb-1">
+                <img src="{% static 'assets/images/benefits-1.png' %}" alt="benefits">
+            </div>
+        </div>
+        <div class="benefits-item item-2">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-lg-5">
+                        <div class="benefits-item-content">
+                            <h3 class="title">Based Around A Global Community Network</h3>
+                            <p>Pellentesque vestibulum fermentum velit non placerat aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit estibulum ante ipsum primis in faucibus.</p>
+                            <p class="text">Entesque vestibulum fermentum velit non placerat lese aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-thumb-2">
+                <img src="{% static 'assets/images/benefits-2.png' %}" alt="benefits">
+            </div>
+        </div>
+        <div class="benefits-item item-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="benefits-item-content">
+                            <h3 class="title">Generating Secure and Adaptive Smart Contracts</h3>
+                            <p>Pellentesque vestibulum fermentum velit non placerat aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit estibulum ante ipsum primis in faucibus.</p>
+                            <p class="text">Entesque vestibulum fermentum velit non placerat lese aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-thumb-1">
+                <img src="{% static 'assets/images/benefits-3.png' %}" alt="benefits">
+            </div>
+        </div>
+        <div class="benefits-item item-2">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-lg-5">
+                        <div class="benefits-item-content">
+                            <h3 class="title">Scalable, Fast and Ultra Secure Transactions</h3>
+                            <p>Pellentesque vestibulum fermentum velit non placerat aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit estibulum ante ipsum primis in faucibus.</p>
+                            <p class="text">Entesque vestibulum fermentum velit non placerat lese aecenase in hendrerit justo quisque quis rhoncus exget semper semlamat lobortis velit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-thumb-2">
+                <img src="{% static 'assets/images/benefits-5.png' %}" alt="benefits">
+            </div>
+        </div>
+    </section>
+
+    <!--====== BENEFITS PART ENDS ======-->
+
+    <!--====== TOKEN PART START ======-->
+
+    <section class="token-area token-2-area">
+        <div class="container">
+            <div class="token-border">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="section-title text-center">
+                            <span>our token distribution</span>
+                            <h3 class="title">Token Allocation Forecast</h3>
+                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">allocation</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">distribution</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="token-thumb">
+                                    <img src="{% static 'assets/images/token-item.png' %}" alt="">
+                                </div>
+                                <div class="token-content-list">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="list d-flex">
+                                                <ul>
+                                                    <li>Product Develoment</li>
+                                                    <li>Marketing</li>
+                                                    <li>Business Development</li>
+                                                    <li>Legal & Regulation</li>
+                                                </ul>
+                                                <ul class="item">
+                                                    <li><span>30%</span></li>
+                                                    <li><span>20%</span></li>
+                                                    <li><span>18%</span></li>
+                                                    <li><span>14%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="list item-2 d-flex">
+                                                <ul>
+                                                    <li>Operational</li>
+                                                    <li>Partner/Investor</li>
+                                                    <li>Contingency</li>
+                                                </ul>
+                                                <ul class="item">
+                                                    <li><span>08%</span></li>
+                                                    <li><span>06%</span></li>
+                                                    <li><span>04%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="token-thumb">
+                                    <img src="{% static 'assets/images/token-item.png' %}" alt="">
+                                </div>
+                                <div class="token-content-list">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="list d-flex">
+                                                <ul>
+                                                    <li>Product Develoment</li>
+                                                    <li>Marketing</li>
+                                                    <li>Business Development</li>
+                                                    <li>Legal & Regulation</li>
+                                                </ul>
+                                                <ul class="item">
+                                                    <li><span>30%</span></li>
+                                                    <li><span>20%</span></li>
+                                                    <li><span>18%</span></li>
+                                                    <li><span>14%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="list item-2 d-flex">
+                                                <ul>
+                                                    <li>Operational</li>
+                                                    <li>Partner/Investor</li>
+                                                    <li>Contingency</li>
+                                                </ul>
+                                                <ul class="item">
+                                                    <li><span>08%</span></li>
+                                                    <li><span>06%</span></li>
+                                                    <li><span>04%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== TOKEN PART ENDS ======-->
+
+    <!--====== VPP DOCUMENTS PART START ======-->
+
+    <section class="VPP-documents-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="section-title text-center">
+                        <span>VPP documents</span>
+                        <h3 class="title">Download And Read Our Crypto Documents</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="VPP-documents-btns">
+                        <ul>
+                            <li><a href="#">White Paper <i class="fal fa-download"></i></a></li>
+                            <li><a href="#">Tech Paper <i class="fal fa-download"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="VPP-documents-btns item-2 mt-10">
+                        <ul>
+                            <li><a href="#">White Paper <i class="fal fa-download"></i></a></li>
+                            <li><a href="#">Tech Paper <i class="fal fa-download"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="VPP-documents-thumb text-center mt-30">
+            <img src="{% static 'assets/images/VPP-documents-thumb.png' %}" alt="VPP-documents">
+        </div>
+    </section>
+
+    <!--====== VPP DOCUMENTS PART ENDS ======-->
+
+    <!--====== HOW WORK PART START ======-->
+
+    <section class="how-work-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="section-title text-center">
+                        <span>How does it work?</span>
+                        <h3 class="title">Understand VPP’s Unique Blockchain Ecosystem</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="how-work-item">
+                        <ul class="nav nav-pills" id="pills-tab-3" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true"><img src="{% static 'assets/images/icon/work-1.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false"><img src="{% static 'assets/images/icon/work-2.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false"><img src="{% static 'assets/images/icon/work-3.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-4-tab" data-toggle="pill" href="#pills-4" role="tab" aria-controls="pills-4" aria-selected="false"><img src="{% static 'assets/images/icon/work-4.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-5-tab" data-toggle="pill" href="#pills-5" role="tab" aria-controls="pills-5" aria-selected="false"><img src="{% static 'assets/images/icon/work-5.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-6-tab" data-toggle="pill" href="#pills-6" role="tab" aria-controls="pills-6" aria-selected="false"><img src="{% static 'assets/images/icon/work-6.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-7-tab" data-toggle="pill" href="#pills-7" role="tab" aria-controls="pills-7" aria-selected="false"><img src="{% static 'assets/images/icon/work-7.png' %}" alt="work"></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-8-tab" data-toggle="pill" href="#pills-8" role="tab" aria-controls="pills-8" aria-selected="false"><img src="{% static 'assets/images/icon/work-8.png' %}" alt="work"></a>
+                            </li>
+                        </ul>
+                        <div class="how-work-thumb">
+                            <img src="{% static 'assets/images/how-work-thumb.png' %}" alt="work">
+                        </div>
+                        <div class="tab-content" id="pills-tabContent-3">
+                            <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">01. Consumer</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">02. Market</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">03. Support</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-4-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">04. Mobile App</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="pills-5-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">05. Marketing</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-6" role="tabpanel" aria-labelledby="pills-6-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">06. Web Development</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-7" role="tabpanel" aria-labelledby="pills-7-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">07. Competitors</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-8" role="tabpanel" aria-labelledby="pills-8-tab">
+
+                                <div class="how-work-content">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="how-work-content-item text-center">
+                                                <h4 class="title">08. Hosting</h4>
+                                                <p>Pellentesque vestibulum fermentum velit non placerat aecnse in hendrerit justo uisque quis rhoncus exeget semper semlamat lobortis velit ante ipsum primis in faucibus.</p>
+                                                <p>Fermentum velit non placerat aecenase in hendrerit justoque quis rhoncus exeget semper semlamat lobortis velit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== HOW WORK PART ENDS ======-->
+
+    <!--====== FUTURE ROADMAP PART START ======-->
+
+    <section class="future-roadmap-area bg_cover" style="background-image: url(assets/images/future-roadmap-bg.png' %});">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title section-title-2 text-center">
+                        <span>Future forecast</span>
+                        <h3 class="title">Our Future Roadmap</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-start justify-content-center first-row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2017 Q1</span>
+                        <h5 class="title">Concept</h5>
+                        <p>Start of the VPP Platform Development.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2017 Q2</span>
+                        <h5 class="title">Research</h5>
+                        <p>esearch the market for better solutions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2017 Q3</span>
+                        <h5 class="title">Design</h5>
+                        <p>Platform design and technical demonstration.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-90 justify-content-center second-row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2018 Q3</span>
+                        <h5 class="title not-done">Token Sale</h5>
+                        <p>Open global sales of VPP ICO tokens.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2018 Q2</span>
+                        <h5 class="title not-done">App Beta Test</h5>
+                        <p>App beta launch to public and improvements.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2018 Q1</span>
+                        <h5 class="title half-done">Pre-Sale</h5>
+                        <p>Public financing and seed funding raised.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-90 justify-content-md-end justify-content-center third-row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2019 Q1</span>
+                        <h5 class="title not-done">Alpha Test</h5>
+                        <p>Prototype published and linked to Ethereum blockchain.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2019 Q2</span>
+                        <h5 class="title not-done">Community Benefits</h5>
+                        <p>Exppand global user base and customer support.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="future-roadmap-item text-center mt-30">
+                        <span>2019 Q3</span>
+                        <h5 class="title not-done">Hardware things</h5>
+                        <p>Integration of third party controllers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="future-roadmap-thumb">
+            <img src="{% static 'assets/images/future-roadmap-thumb.png' %}" alt="thumb">
+        </div>
+    </section>
+
+    <!--====== FUTURE ROADMAP PART ENDS ======-->
+
+    <!--====== TEAM PART START ======-->
+
+    <section class="team-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <span>Our Senior Management</span>
+                        <h3 class="title">Meet Our Executive Team</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-1.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Maria Dokshina</h4>
+                            <span>Co-founder, ceo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-2.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Alexander Nuikin</h4>
+                            <span>Project Manager</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-3.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Nadia Cherkasova</h4>
+                            <span>Head of Community</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-4.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Bdtayev Valery</h4>
+                            <span>PR Director</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-5.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Nikita Shilenko</h4>
+                            <span>PR Director</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-6.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Oleg Gaidukov</h4>
+                            <span>Technical Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-7.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Bogdan Dupak</h4>
+                            <span>Front-end</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-8.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mt-75 pb-30">
+                        <h3 class="title">Meet Our Advisors</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-9.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-10.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-11.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-12.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-13.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-14.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-item mt-40">
+                        <div class="team-thumb">
+                            <img src="{% static 'assets/images/team-15.png' %}" alt="team">
+                            <div class="team-overlay">
+                                <div class="social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h4 class="title">Polina Sukhanova</h4>
+                            <span>Community Hero</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== TEAM PART ENDS ======-->
+
+    <!--====== FAQ PART START ======-->
+
+    <section class="faq-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <span>our Knowledgebase</span>
+                        <h3 class="title">Frequently Asked Questions</h3>
+                        <ul class="nav nav-pills" id="pills-tab-2" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="pills-a-tab" data-toggle="pill" href="#pills-a" role="tab" aria-controls="pills-a" aria-selected="true">general</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-b-tab" data-toggle="pill" href="#pills-b" role="tab" aria-controls="pills-b" aria-selected="false">pre-ico</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="pills-tabContent-2">
+                        <div class="tab-pane fade show active" id="pills-a" role="tabpanel" aria-labelledby="pills-a-tab">
+                            <div class="faq-accordion">
+                                <div class="accrodion-grp"  data-grp-name="faq-accrodion">
+                                    <div class="accrodion active  animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="0ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>What is VPP?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                    <div class="accrodion   animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="300ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>What is CRYPTO Token?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                    <div class="accrodion  animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="600ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>What is the price of the CRYPTO Token?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                    <div class="accrodion  animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="600ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>Why do you accept only Ether (ETH)?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-b" role="tabpanel" aria-labelledby="pills-b-tab">
+                            <div class="faq-accordion">
+                                <div class="accrodion-grp"  data-grp-name="faq-accrodion">
+                                    <div class="accrodion active  animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="0ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>What is VPP?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                    <div class="accrodion   animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="300ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>What is CRYPTO Token?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                    <div class="accrodion  animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="600ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>What is the price of the CRYPTO Token?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                    <div class="accrodion  animated wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="600ms">
+                                        <div class="accrodion-inner">
+                                            <div class="accrodion-title">
+                                                <h4>Why do you accept only Ether (ETH)?</h4>
+                                            </div>
+                                            <div class="accrodion-content">
+                                                <div class="inner">
+                                                    <p>CRYPTO is a utility token based on the ERC20 standard. All transactions on the VPP platform will be carried out in CRYPTO. TheCRYPTO token will be freely tradable on major exchanges and is fully compatible with Ethereum wallets.</p>
+                                                </div><!-- /.inner -->
+                                            </div>
+                                        </div><!-- /.accrodion-inner -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== FAQ PART ENDS ======-->
+
+    <!--====== BLOG PART START ======-->
+
+    <section class="blog-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <span>Our blog</span>
+                        <h3 class="title">Fresh VPP Reads</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="blog-item mt-30">
+                        <div class="blog-thumb">
+                            <img src="{% static 'assets/images/blog-1.jpg" alt="">
+                        </div>
+                        <div class="blog-content text-center">
+                            <span><span>BLOCKCHAIN</span>    |    June 19, 2019</span>
+                            <a href="#">Decentralized vs. Centralized Exchanges</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="blog-item mt-30">
+                        <div class="blog-thumb">
+                            <img src="{% static 'assets/images/blog-2.jpg" alt="">
+                        </div>
+                        <div class="blog-content text-center">
+                            <span><span>BLOCKCHAIN</span>    |    June 19, 2019</span>
+                            <a href="#">Cryptocurrencies and The Promising Future</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="blog-item mt-30">
+                        <div class="blog-thumb">
+                            <img src="{% static 'assets/images/blog-3.jpg" alt="">
+                        </div>
+                        <div class="blog-content text-center">
+                            <span><span>BLOCKCHAIN</span>    |    June 19, 2019</span>
+                            <a href="#">VPP Blockchain Initiative for 2019</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-btn text-center">
+                        <a class="main-btn" href="#">visit our blog <i class="fal fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== BLOG PART ENDS ======-->
+
+    <!--====== BRAND PART START ======-->
+
+    <section class="brand-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <span>Our trusted Partners</span>
+                        <h3 class="title">Meet Our Partners and Platform Backers</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-70">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="brand-item mt-30">
+                        <a href="#"><img src="{% static 'assets/images/brand.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== BRAND PART ENDS ======-->
+
+    <!--====== CONTACT PART START ======-->
+
+    <section class="contact-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <span>get in touch with us</span>
+                        <h3 class="title">Contact VPP Today</h3>
+                        <p>Have any question? Write to us and we’ll get back to you shortly.</p>
+                        <ul>
+                            <li><a href="tel:+61383766284"><img src="{% static 'assets/images/icon/icon-7.png' %}" alt="icon"> +61 3 8376 6284</a></li>
+                            <li><a href="mailto:info@VPP.com"><img src="{% static 'assets/images/icon/icon-8.png' %}" alt="icon"> info@VPP.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form action="#">
+                        <div class="contact-box">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                        <input type="text" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                        <input type="text" placeholder="Email Address">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                        <input type="text" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                        <input type="text" placeholder="Subject">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-box mt-10 text-center">
+                                        <textarea name="#" id="#" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <button type="submit" class="main-btn">send message  <i class="fal fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== CONTACT PART ENDS ======-->
+
+    <!--====== FOOTER PART START ======-->
+
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">Menu</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">PAPERS</h4>
+                        <ul>
+                            <li><a href="#">White Paper</a></li>
+                            <li><a href="#">Technical Paper</a></li>
+                            <li><a href="#">One Pager</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">Newsletter</h4>
+                        <form action="#">
+                            <div class="input-box">
+                                <input type="text" placeholder="Email Address">
+                                <button><i class="fal fa-arrow-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copyright d-flex justify-content-sm-between justify-content-center align-items-center">
+                        <p>© GFXPARTNER</p>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fab fa-github"></i></a></li>
+                            <li><a href="#"><i class="fal fa-paper-plane"></i></a></li>
+                            <li><a href="#"><i class="fab fa-btc"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--====== FOOTER PART ENDS ======-->
+
+    <!--====== scroll_up PART START ======-->
+
+    <a id="scroll_up"><i class="far fa-angle-up"></i></a>
+
+    <!--====== scroll_up PART ENDS ======-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--====== jquery js ======-->
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="{% static 'assets/js/bootstrap.min.js"></script>
+    <script src="{% static 'assets/js/popper.min.js"></script>
+
+    <!--====== nice select js ======-->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js"></script>
+
+    <!--====== Images Loaded js ======-->
+    <script src="{% static 'assets/js/jquery.syotimer.min.js"></script>
+
+    <!--====== Main js ======-->
+    <script src="{% static 'assets/js/main.js"></script>
+
+</body>
+
+</html>

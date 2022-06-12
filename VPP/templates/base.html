@@ -1,0 +1,299 @@
+{% load static  %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>VPP </title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico'%}" type="image/png">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+
+    <!--====== Fontawesome css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/all.css'%}">
+
+    <!--====== nice select css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css'%}">
+
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/default.css'%}">
+
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+
+
+</head>
+
+<body>
+
+    <!--====== HEADER PART START ======-->
+
+    <header class="header-area">
+        <div class="header-nav">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="navigation">
+                            <nav class="navbar navbar-expand-lg navbar-light ">
+                                <a class="navbar-brand" href="index.html"><img src="{% static 'assets/images/logo.png' %}" alt=""></a> <!-- logo -->
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggler-icon"></span>
+                                    <span class="toggler-icon"></span>
+                                    <span class="toggler-icon"></span>
+                                </button> <!-- navbar toggler -->
+
+                                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                    <ul class="navbar-nav m-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="index.html">Home</a>
+
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="about-us.html">About</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Roadmap</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Team</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Faqs</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="contact-us.html">pages <i class="fal fa-angle-down"></i></a>
+                                            <ul class="sub-menu">
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-post.html">Blog Post</a></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div> <!-- navbar collapse -->
+
+
+
+                                {% if request.user.is_authenticated %}
+                                  <a class="main-btn"href="#blance" > {{request.user}} </a>
+                                   <a class="main-btn-2 main-btn"  href="{% url 'accounts:log_out' %}"> log out</a>
+
+                              {% else %}
+                                   <a class="main-btn" href="{% url 'accounts:log_in' %}">login</a>
+                                   <br/>
+                                   <!-- <a class="main-btn-2 main-btn" href="{% url 'accounts:sign_up' %}">signup</a> -->
+                                   <a class="main-btn-2 main-btn" href="{% url 'accounts:sign_up' %}">signup</a>
+                              {% endif %}
+
+
+                            </nav>
+                        </div> <!-- navigation -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--====== HEADER PART ENDS ======-->
+
+
+
+
+
+  {% block content %}
+
+  {% endblock%}
+
+
+
+    <!--====== CONTACT PART START ======-->
+
+    <section class="contact-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <span>get in touch with us</span>
+                        <h3 class="title">Contact VPP Today</h3>
+                        <p>Have any question? Write to us and we’ll get back to you shortly.</p>
+                        <ul>
+                            <li><a href="tel:+61383766284"><img src="{% static 'assets/images/icon/icon-7.png' %}" alt="icon"> +61 3 8376 6284</a></li>
+                            <li><a href="mailto:info@VPP.com"><img src="{% static 'assets/images/icon/icon-8.png' %}" alt="icon"> info@VPP.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form action="#">
+                        <div class="contact-box">
+                            {% csrf_token %}
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                        <!---<input type="text" placeholder="Name">form.name|placeholder:"Label" -->
+                                      Name:  {{ form.name}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                      Email: {{form.email}}
+                                    <!---    <input type="text" placeholder="Email Address">-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                      Phone: {{form.phone_number}}
+                                    <!---    <input type="text" placeholder="Phone">-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box mt-10">
+                                      Subject: {{form.subject}}
+                                    <!---    <input type="text" placeholder="Subject">-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-box mt-10 text-center">
+                                      Message: {{form.message}}
+                                      <!---  <textarea name="#" id="#" cols="30" rows="10" placeholder="Message"></textarea> -->
+                                        <button type="submit" class="main-btn">send message  <i class="fal fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== CONTACT PART ENDS ======-->
+
+    <!--====== FOOTER PART START ======-->
+
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">Menu</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">PAPERS</h4>
+                        <ul>
+                            <li><a href="#">White Paper</a></li>
+                            <li><a href="#">Technical Paper</a></li>
+                            <li><a href="#">One Pager</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-list mt-30">
+                        <h4 class="title">Newsletter</h4>
+                        <form action="#">
+                            <div class="input-box">
+                                <input type="text" placeholder="Email Address">
+                                <button><i class="fal fa-arrow-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copyright d-flex justify-content-sm-between justify-content-center align-items-center">
+                        <p>© GFXPARTNER</p>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fab fa-github"></i></a></li>
+                            <li><a href="#"><i class="fal fa-paper-plane"></i></a></li>
+                            <li><a href="#"><i class="fab fa-btc"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--====== FOOTER PART ENDS ======-->
+
+    <!--====== scroll_up PART START ======-->
+
+    <a id="scroll_up"><i class="far fa-angle-up"></i></a>
+
+    <!--====== scroll_up PART ENDS ======-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--====== jquery js ======-->
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+    <!--====== nice select js ======-->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+    <!--====== Images Loaded js ======-->
+    <script src="{% static 'assets/js/jquery.syotimer.min.js' %}"></script>
+
+    <!--====== Main js ======-->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
