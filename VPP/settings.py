@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'affilate',
     'bootstrap4',
+    'django_extensions',
 
 ]
 

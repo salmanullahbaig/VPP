@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="error-area bg_cover" style="background-image: url('/static/assets/images/login-bg.jpg');">
+        <div class="container">
+            <div class="row">
+                <!-- <h4 style="color:white;text-align:center;width:100%" >Welcome to Valour!</h4> -->
+                <div class="col-md-12">
+                    <div class="login-box">
+                        <!-- <div class="login-title text-center"> -->
+                            <!-- <img src="/static/assets/images/logo-2.png" alt="logo"> -->
+                            <!-- <h3 class="title">Welcome to Valour! </h3> -->
+                        <!-- </div> -->
+
+
+<div class="login-input">
+    <h3 style="text-align:center;width:100%">My Affilate Link</h3>
+
+      <input type="hidden" name="csrfmiddlewaretoken" value="fAl5abHSWRSbBNDzcFH4F8EEMgsH0Dd1K8E7GSo8Q8LphZCIu9b0dO7iB1h2eQqL" placeholder="kdjfkdfj">
+        <input type="hidden" name="csrfmiddlewaretoken" value="fAl5abHSWRSbBNDzcFH4F8EEMgsH0Dd1K8E7GSo8Q8LphZCIu9b0dO7iB1h2eQqL" placeholder="jfdksfjaksd">
+      <div class="form-group"><label for="id_email_or_username">Link</label>
+
+<input type="text" class="form-control"   value={{link}}></div>
+
+<div class="form-group"><div class="form-check">
+
+  </div></div>
+
+<a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec">      <button class="main-btn" type="submit">Go to home page  <i class="fal fa-arrow-right"></i></button> </a>
+
+
+
+
+</div>
+
+
+
+
+
+                    </div>
+                    <!--<div class="col-lg-5 col-md-6">
+                        <div class="login-box">
+
+
+                        </div>
+                    </div>-->
+
+            </div>
+        </div>
+    </div></section>
+{% endblock %}

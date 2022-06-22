@@ -11,5 +11,7 @@ urlpatterns = [
     path('wallet/',views.walletView,name= 'wallet'),
     path('message/',views.sendMessageView,name= 'message'),
     path('refers/',views.refersView, name= 'refers'),
+    path('refer_link/',views.affilateLinkView, name= 'refer_link'),
     path('account/',include(accounts_urls)),
+
 ]

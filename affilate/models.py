@@ -20,8 +20,8 @@ class user_wallet(models.Model):
         return keys
 
 class user_bonus(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bonus = models.CharField(max_length=200, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bonus = models.CharField(max_length=200, unique=False)
     amount = models.FloatField(default=0)
     USDT = models.FloatField(default=0)
     TRX = models.FloatField(default=0)
