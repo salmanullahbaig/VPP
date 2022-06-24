@@ -35,7 +35,7 @@ class Refer(models.Model):
 
     def save(self, *args, **kwargs):
         if str(self.code) =='None' or str(self.code) =='':
-            self.code = generate_ref_code()
+            self.code =self.user.username #generate_ref_code()
         print("self********** code", self.code)
         #super(*args, **kwargs).save()
         super(Refer, self).save(*args, **kwargs)

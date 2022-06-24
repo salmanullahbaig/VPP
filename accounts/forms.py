@@ -15,7 +15,7 @@ class UserCacheMixin:
 
 
 class SignIn(UserCacheMixin, forms.Form):
-    password = forms.CharField(label=_('Password'), strip=False, widget=forms.PasswordInput)
+    password = forms.CharField(label=_(''), strip=False, widget=forms.PasswordInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -84,7 +84,7 @@ class SignInViaEmailForm(SignIn):
 
 
 class SignInViaEmailOrUsernameForm(SignIn):
-    email_or_username = forms.CharField(label=_('Email or Username'))
+    email_or_username = forms.CharField(label=_(''))
 
     @property
     def field_order(self):
@@ -112,7 +112,7 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = settings.SIGN_UP_FIELDS
 
-    email = forms.EmailField(label=_('Email'), help_text=_('Required. Enter an existing email address.'))
+    email = forms.EmailField(label=_(''))#, help_text=_('Required. Enter an existing email address.'))
 
     def clean_email(self):
         email = self.cleaned_data['email']

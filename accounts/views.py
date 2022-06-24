@@ -46,7 +46,7 @@ class GuestOnlyView(View):
 
 
 class LogInView(GuestOnlyView, FormView):
-    template_name = 'accounts/log_in.html'
+    template_name = 'login.html'
 
     @staticmethod
     def get_form_class(**kwargs):
@@ -54,9 +54,11 @@ class LogInView(GuestOnlyView, FormView):
             return SignInViaEmailForm
 
         if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
+            #print(dir(SignInViaEmailOrUsernameForm))
             return SignInViaEmailOrUsernameForm
-
-        return SignInViaUsernameForm
+        print(SignInViaEmailForm)
+        return  SignInViaEmailForm
+        #return SignInViaUsernameForm
 
     @method_decorator(sensitive_post_parameters('password'))
     @method_decorator(csrf_protect)
@@ -93,7 +95,7 @@ class LogInView(GuestOnlyView, FormView):
 
 
 class SignUpView(GuestOnlyView, FormView):
-    template_name = 'accounts/sign_up.html'
+    template_name = 'signup.html'
     form_class = SignUpForm
 
     def form_valid(self, form ,*args, **kwargs):
@@ -158,7 +160,7 @@ def sign_up_ref(request, *args , **kwargs):
         print("Invalid recommendation link")
         messages.error(request, 'Invalid recommendation link.')
         form = SignUpForm()
-        return render(request, 'accounts/sign_up.html', {'form': form})
+        return render(request, 'signup.html', {'form': form})
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -217,7 +219,7 @@ def sign_up_ref(request, *args , **kwargs):
             return render(request, 'accounts/sign_up.html', {'form': form})
     else:
         form = SignUpForm()
-        return render(request, 'accounts/sign_up.html', {'form': form})
+        return render(request, 'signup.html', {'form': form})
         #return render(request, 'sign_up.html')
 
 

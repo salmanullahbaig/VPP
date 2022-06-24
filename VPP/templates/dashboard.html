@@ -1,0 +1,250 @@
+{%load static %}
+{%load bootstrap4%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VVp</title>
+
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  -->
+<style>
+*{
+    padding: 0;
+    margin: 0;
+
+}
+.dashboard{
+    position: relative;
+}
+
+.bg-banner img{
+
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+
+.wrapper-bg img{
+    width: 90%;
+    height: 65%;
+    position: absolute;
+    top:1%;
+    left:5%;
+}
+
+.buy-buttons{
+    position: absolute;
+    top:20%;
+    left:36%;
+}
+.buy-buttons a{
+   display:block;
+   text-decoration: none;
+   font-size: 13px;
+   color:yellow;
+   padding:.2rem;
+   font-weight: bold;
+
+
+}
+
+.db{
+    position: absolute;
+    bottom:38.5%;
+    left:30%;
+}
+
+.db img{
+    width: 50%;
+
+}
+.logout{
+    position: absolute;
+    bottom:47%;
+    left:80%;
+}
+.logout img{
+    width: 30%;
+
+}
+.username{
+    position: absolute;
+    bottom:54%;
+    left:80%;
+}
+.username h3{
+    color:yellow;
+    font-size: 99%;
+}
+
+
+.smallscreen{
+    display: none;
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+
+ .smallscreen{
+    display: block;
+ }
+ .bigscreen{
+    display: none;
+ }
+
+.buy-buttons{
+    left:67.3% !important;
+    top:19% !important;
+    z-index: 2;
+
+}
+.buy-buttons a{
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+}
+.db{
+    bottom:39% !important;
+    }
+.username{
+    top:8%;
+    width: 100%;
+    left: 65% !important;
+}
+.username h3{
+    font-size: 12px !important;
+}
+
+.logout{
+top:11%;
+left: 65%;
+z-index: 1;
+
+}
+.logout img{
+    width: 70px;
+}
+
+}
+
+
+@media only screen and (max-width: 1050px) {
+
+    .buy-buttons{
+        top:21.5%;
+    }
+    .buy-buttons a{
+        font-size: .8rem;
+        padding-top:1px;
+
+    }
+    .db{
+        bottom:43%;
+    }
+.db img{
+    width: 50%;
+}
+.username{
+    bottom:53%;
+    right: 54%;
+
+
+}
+.username h3{
+    font-size: 14px;;
+}
+
+.wrapper bg{
+    width: 900px !important;
+
+}
+
+}
+
+
+
+
+</style>
+
+</head>
+<body>
+
+    <section class="dashboard">
+
+      <div class="bg-banner">
+
+               <img src="{% static '\new_assets\Dashboard_Main\VPP_Main_Menu_Background.png'%}" alt="">
+
+        </div>
+
+
+
+
+
+        <div class="wrapper-bg">
+                      <img class="bigscreen"  src="{% static '\new_assets\Dashboard_Main\Dashboard_base2.png'%}" alt="">
+                      <img class="smallscreen"  src="{% static '\new_assets\Dashboard_Main\Page_2_600x.png'%}" alt="">
+        </div>
+
+
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+          <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            {{ message }}
+          </div>
+        </div>
+        {% endfor %}
+
+
+        <div class="buy-buttons">
+          <form class=""  method="post">
+
+
+              <a href="{% url 'one_seed' %}">  <h2> Buy </h2> </a>
+                <a href="{% url 'two_seed' %}"><h2> Buy </h2></a>
+                <a href="{% url 'add_10_seed' %}"><h2> Buy </h2></a>
+                <a href="{% url 'add_100_seed' %}"><h2> Buy </h2></a>
+                <a href="{% url 'add_200_seed' %}"><h2> Buy </h2></a> </h3>
+                  </form>
+        </div>
+
+          <div class="db">
+           <a href="{% url 'index'%}"><img src="{% static '\new_assets\Dashboard_Main\Return_to_dashboard_button.png'%}" alt=""></a>
+          </div>
+
+          <div class="logout">
+            <a href="{% url 'accounts:log_out' %}"><img src="{% static '\new_assets\Dashboard_Main\Logout_button.png'%}" alt=""></a>
+          </div>
+
+          <div class="username">
+            <h3>
+              {% if request.user.is_authenticated %}
+                 {{request.user}}
+
+            {% else %}
+                 <a class="" href="{% url 'accounts:sign_up' %}">signup</a>
+            {% endif %}
+            </h3>
+
+          </div>
+
+    </section>
+
+
+</body>
+</html>

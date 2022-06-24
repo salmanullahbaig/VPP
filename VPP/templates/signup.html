@@ -1,0 +1,205 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+.signup{
+    position: relative;
+}
+.bg video{
+width: 100%;
+height: 100vh;
+object-fit: cover;
+}
+
+.wrapper img{
+    width: 550px;
+    position: absolute;
+    right: 50px;
+    top:45px;
+}
+.signbutton{
+    top:365px !important;
+    width: 275px !important;
+    right: 54px !important;
+}
+
+.wrapper form{
+    position: absolute;
+    right: 130px;
+    top:117px;
+}
+.wrapper form input{
+    width: 337px;
+    padding:8px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    color:yellow;
+    background-color:transparent;
+
+}
+
+.wrapper form input:nth-child(1){
+
+padding-top: 12px !important;
+}
+.wrapper form input:nth-child(12){
+
+  margin-top: 10px !important;
+
+}
+.signbutton{
+cursor: pointer;
+}
+.error{
+  color:red;
+  position: absolute;
+ top:1.5%;
+  right: 10%;
+}
+
+@media only screen and (max-width: 618px) {
+
+      .wrapper img{
+        width: 400px;
+        right: 25px;
+      }
+      .wrapper form{
+        right: 77px;
+        top:100px;
+
+      }
+      .wrapper form input{
+        width: 260px;
+        padding: 4px;
+        margin-bottom: 20px;
+      }
+      .wrapper form input:nth-child(1){
+
+     padding-top: 6px !important;
+    }
+    .signbutton{
+    top:270px !important;
+    width: 140px !important;
+    right: 75px !important;
+   }
+}
+
+@media only screen and (max-width: 460px) {
+
+  .wrapper img{
+    width: 300px;
+    right: 10px;
+  }
+  .wrapper form{
+    right: 53px;
+    top:82px;
+
+  }
+  .wrapper form input{
+    width: 190px;
+    padding: 2px;
+    margin-bottom: 14px;
+  }
+  .wrapper form input:nth-child(1){
+
+ padding-top: 3px !important;
+}
+.signbutton{
+top:210px !important;
+width: 110px !important;
+right: 40px !important;
+}
+}
+
+
+</style>
+</head>
+<body>
+
+  <div class="signup">
+
+
+      <div class="bg">
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static 'new_assets/Video_Background.mov'%}" type="video/mp4">
+          </video>
+      </div>
+
+      <div class="wrapper">
+             <img src="{% static 'new_assets/Register_menu_base.png'%}" alt="">
+
+             {% if messages %}
+               {% for message in messages %}
+                 <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+               {% endfor %}
+             {% endif %}
+
+             <form method="post">
+               {% csrf_token %}
+
+              {{ form.username }} <br>
+              {{ form.first_name }}<br>
+              {{ form.last_name  }}<br>
+              {{ form.email  }}<br>
+              {{ form.password1  }}<br>
+            {{ form.password2  }}<br>
+
+
+
+              <!--
+               <div class="col-md-6">{% bootstrap_form form exclude='email,password1,password2' %}</div>
+               <div class="col-md-6">{% bootstrap_form form exclude='username,first_name,last_name' %}</div>
+               -->
+          <button type="submit" name="button">
+     <img class="signbutton" src="{% static 'new_assets/Sign_Up_button.png'%}" alt=""></a>
+     </button>
+             </form>
+
+             <div class="error">
+
+           {% if form.errors %}
+              {% for field in form %}
+                  {% for error in field.errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+              {% endfor %}
+              {% for error in form.non_field_errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endif %}
+            </div>
+             <!--
+             <form action="" method="post">
+                 <input type="text" > <br>
+                  <input type="text" > <br>
+                  <input type="text" > <br>
+                  <input type="email" > <br>
+                  <input type="password" >   <br>
+                  <input type="password" > <br>
+                  <a href=""><img class="signbutton" src="{% static 'new_assets/Sign_Up_button.png'%}" alt=""></a>
+             </form>
+           -->
+
+      </div>
+
+  </div>
+
+</body>
+</html>

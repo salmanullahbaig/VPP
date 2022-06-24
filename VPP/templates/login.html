@@ -1,0 +1,165 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+<style>
+  *{
+    padding:0;
+    margin:0;
+  }
+.login{
+    position: relative;
+}
+.bg video{
+width: 100%;
+height: 100vh;
+object-fit: cover;
+}
+
+.wrapper img{
+    width: 550px;
+    position: absolute;
+    right: 50px;
+    top:45px;
+}
+.loginbutton{
+    top:180px !important;
+    width: 185px !important;
+    right: 67px !important;
+}
+
+.wrapper form{
+    position: absolute;
+    right: 130px;
+    top:167px;
+}
+.form-control{
+    width: 327px;
+    padding:12px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    color:yellow;
+    background-color:transparent;
+  
+}
+
+
+
+.signupbtn{
+  top: 460px !important;
+  right: 140px !important;
+}
+
+.submitbtn{
+  cursor: pointer;
+}
+.invalid-feedback{
+  color:red;
+ 
+}
+@media only screen and (max-width: 618px) {
+  
+      .wrapper img{
+        width: 400px;
+        right: 25px;
+      }
+      .wrapper form{
+        right: 77px;
+        top:135px;
+    
+      }
+      .form-control{
+        width: 250px;
+        padding: 6px;
+        margin-bottom: 20px;
+      }
+ 
+    .loginbutton{
+    top:128px !important;
+    width: 143px !important;
+    right: 40px !important;
+   }
+   .signupbtn{
+    top:345px !important;
+    right:100px !important;
+   }
+}
+
+@media only screen and (max-width: 460px) {
+  
+  .wrapper img{
+    width: 300px;
+    right: 10px;
+  }
+  .wrapper form{
+    right: 53px;
+    top:110px;
+
+  }
+  .form-control{
+    width: 180px;
+    padding: 6px;
+    margin-bottom: 14px;
+  }
+
+  .form-control:nth-child(3){
+
+margin-top: 0px;
+}
+
+
+.loginbutton{
+top:99px !important;
+width: 110px !important;
+right: 20px !important;
+}
+
+.signupbtn{
+    top:265px !important;
+    right: 70px !important;
+   }
+}
+</style>
+</head>
+<body>
+
+  <div class="login">
+
+
+      <div class="bg">
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static 'new_assets/Video_Background.mov'%}" type="video/mp4">
+          </video>
+      </div>
+
+      <div class="wrapper">
+             <img src="{% static 'new_assets/Login_menu_base.png'%}" alt="">
+
+
+
+
+             <a href="{% url 'accounts:sign_up' %}"><img class="loginbutton signupbtn" src="{% static 'new_assets/Sign_Up_button.png'%}" alt=""></a>
+             <form action="" method="post">
+               {% csrf_token %}
+             {% bootstrap_form form %}
+
+        
+                <button class="submitbtn" type="submit">
+                  <img class="loginbutton" src="{% static 'new_assets/Login_button.png'%}" alt="">
+                  </button>
+             </form>
+
+
+      </div>
+
+  </div>
+
+</body>
+</html>

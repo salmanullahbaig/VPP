@@ -1,58 +1,137 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+
+<style>
+
+.wallet{
+    position: relative;
+}
+.bg img{
+width: 100%;
+height: 100vh;
+object-fit: cover;
+}
+
+.wrapper img{
+    width: 550px;
+    position: absolute;
+    left: 50px;
+    top:45px;
+}
+.installbutton{
+    top:335px !important;
+    width: 170px !important;
+    left: 297px !important;
+}
+
+.wrapper form{
+    position: absolute;
+    left: 170px;
+    top:117px;
+}
+.wrapper form input{
+    width: 320px;
+    padding:12px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    color:yellow;
+    background-color:transparent;
+
+}
+
+.wrapper form input:nth-child(3){
+
+margin-top: 10px;
+}
 
 
-<section class="error-area bg_cover" style="background-image: url('/static/assets/images/login-bg.jpg');">
-        <div class="container">
-            <div class="row">
-                <!-- <h4 style="color:white;text-align:center;width:100%" >Welcome to Valour!</h4> -->
-                <div class="col-md-12">
-                    <div class="login-box">
-                        <!-- <div class="login-title text-center"> -->
-                            <!-- <img src="/static/assets/images/logo-2.png" alt="logo"> -->
-                            <!-- <h3 class="title">Welcome to Valour! </h3> -->
-                        <!-- </div> -->
+@media only screen and (max-width: 618px) {
+
+      .wrapper img{
+        width: 400px;
+        left: 25px;
+      }
+      .wrapper form{
+        left: 102px;
+        top:100px;
+
+      }
+      .wrapper form input{
+        width: 250px;
+        padding: 6px;
+        margin-bottom: 20px;
+      }
+
+    .installbutton{
+    top:255px !important;
+    width: 123px !important;
+    left: 205px !important;
+   }
+}
+
+@media only screen and (max-width: 460px) {
+
+  .wrapper img{
+    width: 300px;
+    left: 10px;
+  }
+  .wrapper form{
+    left: 73px;
+    top:85px;
+
+  }
+  .wrapper form input{
+    width: 180px;
+    padding: 3px;
+    margin-bottom: 14px;
+  }
+
+  .wrapper form input:nth-child(3){
+
+margin-top: 5px;
+}
 
 
-<div class="login-input">
-    <h3 style="text-align:center;width:100%">My Wallet keys</h3>
-
-      <input type="hidden" name="csrfmiddlewaretoken" value="fAl5abHSWRSbBNDzcFH4F8EEMgsH0Dd1K8E7GSo8Q8LphZCIu9b0dO7iB1h2eQqL" placeholder="kdjfkdfj">
-        <input type="hidden" name="csrfmiddlewaretoken" value="fAl5abHSWRSbBNDzcFH4F8EEMgsH0Dd1K8E7GSo8Q8LphZCIu9b0dO7iB1h2eQqL" placeholder="jfdksfjaksd">
-      <div class="form-group"><label for="id_email_or_username">Public Key</label>
-
-<input type="text" class="form-control"   value={{public_key}}></div>
-<div class="form-group"><label for="id_password">Private Key</label>
-  <input type="text" name="password" class="form-control" value = {{secret_key}}></div>
-
-<div class="form-group"><div class="form-check">
-
-  </div></div>
-
-      <label for="register-note">Do not have TronLink ?   <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec">Install</a> <br>
-
-        <a href="https://tronscan.org/">Add to tronscan</a>.</label><br>
-<a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec">      <button class="main-btn" type="submit">TronLink Install  <i class="fal fa-arrow-right"></i></button> </a>
+.installbutton{
+top:202px !important;
+width: 90px !important;
+left: 146px !important;
+}
+}
 
 
+</style>
+</head>
+<body>
+
+  <div class="wallet">
 
 
-</div>
+      <div class="bg">
+        <img src="{% static 'new_assets\Referrals&Wallet_menu\Wallet_Web_background.jpeg'%}" alt="">
+      </div>
 
+      <div class="wrapper">
+             <img src="{% static 'new_assets\Referrals&Wallet_menu\Animation_Menu_Wallet.png'%}" alt="">
+             <a href="https://www.tronlink.org/" target="_blank"><img class="installbutton" src="{% static 'new_assets\Referrals&Wallet_menu\Install_tronlink_button.png'%}" alt=""></a>
 
+             <form action="" method="post">
+                 <input type="text" value={{public_key}} > <br>
+                  <input type="text" value = {{secret_key}}> <br>
+             </form>
 
+      </div>
 
+  </div>
 
-                    </div>
-                    <!--<div class="col-lg-5 col-md-6">
-                        <div class="login-box">
-
-
-                        </div>
-                    </div>-->
-
-            </div>
-        </div>
-    </div></section>
-{% endblock %}
+</body>
+</html>

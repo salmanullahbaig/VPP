@@ -1,0 +1,261 @@
+{%load static %}
+{%load bootstrap4%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VVp</title>
+
+<style>
+*{
+    padding:0;
+    margin:0;
+}
+.dashboard{
+    position: relative;
+}
+
+.bg-banner img{
+
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+
+.wrapper-bg img{
+    width: 90%;
+    height: 65%;
+    position: absolute;
+    top:1%;
+    left:5%;
+}
+
+
+
+.db{
+    position: absolute;
+    top:46%;
+    left:30%;
+}
+
+.db img{
+    width: 49%;
+
+}
+.logout{
+    position: absolute;
+    bottom:47%;
+    left:80%;
+}
+.logout img{
+    width: 30%;
+
+}
+.username{
+    position: absolute;
+    bottom:54%;
+    left:80%;
+}
+.username h3{
+    color:yellow;
+    font-size: 99%;
+}
+
+.wallet{
+    position: absolute;
+    top:18%;
+    left:15%;
+}
+.wallet img{
+    width: 20%;
+}
+
+.reffer img{
+    width: 15%;
+    position: absolute;
+    top:19%;
+    right:15%;
+}
+
+
+.smallscreen{
+    display: none;
+}
+
+
+@media only screen and (max-width: 650px) {
+
+  .smallscreen{
+    display: block;
+  }
+
+  .bigscreen{
+    display: none;
+  }
+
+
+  .wallet{
+    top:38% !important;
+    left: 36%;
+
+  }
+  .wallet img{
+    width:49% !important;
+  }
+
+.reffer img{
+    top:12.5% !important;
+    right: 30% !important;
+    width: 24% !important;
+}
+
+.db{
+    top:55% !important;
+}
+
+.username{
+    width: 100%;
+    top:27%;
+    left: 65% !important;
+}
+
+.logout{
+    top:31%;
+    left:65%;
+    z-index: 1;
+}
+.logout img{
+    width: 40%;
+}
+
+}
+
+
+@media only screen and (max-width: 760px) {
+
+    .wallet{
+        top:20%;
+    }
+    .wallet img{
+        width:21% ;
+    }
+    .reffer img{
+        top:20%;
+        width: 20%;
+        right: 14%;
+    }
+    .logout img{
+        width: 45%;
+    }
+.username{
+    bottom:52% !important;
+}
+
+}
+
+
+
+@media only screen and (max-width: 1050px) {
+
+
+    .db{
+        bottom:248px;
+    }
+.db img{
+    width: 50%;
+}
+.username{
+    bottom:53%;
+    right: 54%;
+
+}
+.username h3{
+    font-size: 15px;;
+}
+
+.wrapper bg{
+    width: 900px !important;
+
+}
+
+}
+
+
+@media only screen and (min-width: 1260px) {
+
+
+ .db img{
+width: 405px;;
+ }
+.reffer img{
+    width: 180px;
+}
+.wallet img{
+    width: 180px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+    <section class="dashboard">
+
+      <div class="bg-banner">
+
+               <img src="{% static '\new_assets\Dashboard_Main\VPP_Main_Menu_Background.png'%}" alt="">
+
+        </div>
+
+
+        <div class="wrapper-bg">
+                      <img class="bigscreen" src="{% static '\new_assets\Dashboard_Main\Menu_Base1.png'%}" alt="">
+                      <img class="smallscreen" src="{% static '\new_assets\Dashboard_Main\Page_1_600x.png'%}" alt="">
+        </div>
+
+
+
+
+          <div class="db">
+           <a href="{% url 'purchase_seed' %}"><img src="{% static '\new_assets\Dashboard_Main\Purchase_seed_powerups_Button.png'%}" alt=""></a>
+          </div>
+
+          <div class="logout">
+            <a href="{% url 'accounts:log_out' %}"><img src="{% static '\new_assets\Dashboard_Main\Logout_button.png'%}" alt=""></a>
+          </div>
+
+
+
+          <div class="username">
+            <h3>
+              {% if request.user.is_authenticated %}
+                 {{request.user}}
+
+            {% else %}
+                 <a class="" href="{% url 'accounts:sign_up' %}">signup</a>
+            {% endif %}
+              </h3>
+
+          </div>
+
+      <div class="wallet">
+        <a href="{% url 'wallet' %}"><img src="{% static '\new_assets\Dashboard_Main\Go_to_wallet_button.png'%}" alt=""></a>
+      </div>
+
+  <div class="reffer">
+    <a href="{% url 'refer_link' %}"> <img src="{% static '\new_assets\Dashboard_Main\Go_To_Referral_Link.png'%}" alt=""></a>
+  </div>
+
+    </section>
+
+
+</body>
+</html>

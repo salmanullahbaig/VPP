@@ -4,20 +4,31 @@ from django.contrib.auth.decorators import login_required
 from .forms import  User_Message_form
 from affilate.models import user_wallet
 from accounts.models import Refer
+from django.contrib import messages
+from .transfer import *
 #from affilate.utils import plan_age
 
+#@login_required
 def home(request):
     form= User_Message_form()
-    return render(request, 'index.html', locals())
+    return render(request, 'home.html', locals())
 
-    #return HttpResponse(qs_json, content_type='application/json')
+def Purchase_seed(request):
+    return render(request, 'dashboard.html', locals())
+
+# messages.debug(request, '%s SQL statements were executed.' % count)
+# messages.info(request, 'Three credits remain in your account.')
+# messages.success(request, 'Profile details updated.')
+# messages.warning(request, 'Your account expires in three days.')
+# messages.error(request, 'Document deleted.')
+
 
 def walletView(request):
     try:
         api_keys  = user_wallet.objects.get(user = request.user).get_api()
         public_key, secret_key = api_keys['public_key'], api_keys['secret_key']
     except:
-        public_key, secret_key = "Not found", "Not found"
+        public_key, secret_key = "kk3j4234j3lk343434324j32", "343k4j343243243243343243243"
     form= User_Message_form()
     return render(request, 'wallet.html', locals())
 
@@ -28,7 +39,7 @@ def affilateLinkView(request):
     except:
         link = "Not_found"
     form= User_Message_form()
-    return render(request, 'affilate_link.html', locals())
+    return render(request, 'refferals.html', locals())
 
 
 def refersView(request):
@@ -53,3 +64,80 @@ def sendMessageView(request):
     else:
         print(request.POST.dict())
         return render(request, 'index.html', locals())
+
+
+trx_limit = 50
+def add_one_seed(request):
+    print("Adding one seed")
+    seed_value = 100
+    trx = get_trx_user(request.user)
+    usdt = get_usdt_user(request.user)
+    print("Trx",trx,"usdt=", usdt)
+    if usdt >= seed_value and trx > trx_limit:
+        distrubute_refer_bonus(request.user, 100)
+        messages.success(request, 'Distrubution successfully')
+    elif trx < trx_limit:
+        messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
+    elif usdt < seed_value:
+        messages.error(request, 'Please add USDT there is only '+str(trx) + " in your account")
+    return render(request, 'dashboard.html', locals())
+
+def add_2_seed(request):
+    print("Adding one seed")
+    seed_value = 200
+    trx = get_trx_user(request.user)
+    usdt = get_usdt_user(request.user)
+    print("Trx",trx,"usdt=", usdt)
+    if usdt >= seed_value and trx > trx_limit:
+        distrubute_refer_bonus(request.user, 100)
+        messages.success(request, 'Distrubution successfully')
+    elif trx < trx_limit:
+        messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
+    elif usdt < seed_value:
+        messages.error(request, 'Please add USDT there is only '+str(trx) + " in your account")
+    return render(request, 'dashboard.html', locals())
+
+def add_10_seed(request):
+    print("Adding one seed")
+    seed_value = 10 * 100
+    trx = get_trx_user(request.user)
+    usdt = get_usdt_user(request.user)
+    print("Trx",trx,"usdt=", usdt)
+    if usdt >= seed_value and trx > trx_limit:
+        distrubute_refer_bonus(request.user, 100)
+        messages.success(request, 'Distrubution successfully')
+    elif trx < trx_limit:
+        messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
+    elif usdt < seed_value:
+        messages.error(request, 'Please add USDT there is only '+str(trx) + " in your account")
+    return render(request, 'dashboard.html', locals())
+
+def add_100_seed(request):
+    print("Adding one seed")
+    seed_value = 100 * 100
+    trx = get_trx_user(request.user)
+    usdt = get_usdt_user(request.user)
+    print("Trx",trx,"usdt=", usdt)
+    if usdt >= seed_value and trx > trx_limit:
+        distrubute_refer_bonus(request.user, 100)
+        messages.success(request, 'Distrubution successfully')
+    elif trx < trx_limit:
+        messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
+    elif usdt < seed_value:
+        messages.error(request, 'Please add USDT there is only '+str(trx) + " in your account")
+    return render(request, 'dashboard.html', locals())
+
+def add_200_seed(request):
+    print("Adding one seed")
+    seed_value = 200 * 100
+    trx = get_trx_user(request.user)
+    usdt = get_usdt_user(request.user)
+    print("Trx",trx,"usdt=", usdt)
+    if usdt >= seed_value and trx > trx_limit:
+        distrubute_refer_bonus(request.user, 100)
+        messages.success(request, 'Distrubution successfully')
+    elif trx < trx_limit:
+        messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
+    elif usdt < seed_value:
+        messages.error(request, 'Please add USDT there is only '+str(trx) + " in your account")
+    return render(request, 'dashboard.html', locals())
