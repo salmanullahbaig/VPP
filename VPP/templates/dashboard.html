@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VVp</title>
 
-    <!--
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  -->
+
 <style>
 *{
     padding: 0;
@@ -31,7 +31,11 @@
 
 }
 
-
+.container-fluid{
+  position: absolute;
+  top:80px ;
+  right: 34%;
+}
 
 .wrapper-bg img{
     width: 90%;
@@ -51,7 +55,7 @@
    text-decoration: none;
    font-size: 13px;
    color:yellow;
-   padding:.2rem;
+   padding:.0rem;
    font-weight: bold;
 
 
@@ -215,11 +219,11 @@ z-index: 1;
           <form class=""  method="post">
 
 
-              <a href="{% url 'one_seed' %}">  <h2> Buy </h2> </a>
-                <a href="{% url 'two_seed' %}"><h2> Buy </h2></a>
-                <a href="{% url 'add_10_seed' %}"><h2> Buy </h2></a>
-                <a href="{% url 'add_100_seed' %}"><h2> Buy </h2></a>
-                <a href="{% url 'add_200_seed' %}"><h2> Buy </h2></a> </h3>
+              <a href="{% url 'one_seed' %}">  <h5> Buy </h5> </a>
+                <a href="{% url 'two_seed' %}"><h5>Buy </h5></a>
+                <a href="{% url 'add_10_seed' %}"><h5>Buy </h5></a>
+                <a href="{% url 'add_100_seed' %}"><h5>Buy </h5></a>
+                <a href="{% url 'add_200_seed' %}"><h5>Buy </h5></a> </h3>
                   </form>
         </div>
 

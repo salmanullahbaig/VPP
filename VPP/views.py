@@ -38,7 +38,13 @@ def affilateLinkView(request):
         link = "http://127.0.0.1:8000/account/sign-up/" + str(link)
     except:
         link = "Not_found"
-    form= User_Message_form()
+    users_tree = Refer.objects.filter(recommended_by=request.user)
+    print(users_tree)
+    users = []
+    for tree in users_tree:
+        users.append(tree.user)
+    print(users)
+    total_refers = len(users)
     return render(request, 'refferals.html', locals())
 
 
@@ -74,8 +80,12 @@ def add_one_seed(request):
     usdt = get_usdt_user(request.user)
     print("Trx",trx,"usdt=", usdt)
     if usdt >= seed_value and trx > trx_limit:
-        distrubute_refer_bonus(request.user, 100)
-        messages.success(request, 'Distrubution successfully')
+        try:
+            distrubute_refer_bonus(request.user, 100)
+            messages.success(request, 'Distrubution successfully')
+            user_seed.objects.create(user = request.user, seed = 1,status = "paid", seed_value= 100 )
+        except:
+            messages.error(request, 'Distrubution is not successful')
     elif trx < trx_limit:
         messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
     elif usdt < seed_value:
@@ -89,8 +99,12 @@ def add_2_seed(request):
     usdt = get_usdt_user(request.user)
     print("Trx",trx,"usdt=", usdt)
     if usdt >= seed_value and trx > trx_limit:
-        distrubute_refer_bonus(request.user, 100)
-        messages.success(request, 'Distrubution successfully')
+        try:
+            distrubute_refer_bonus(request.user, 200)
+            messages.success(request, 'Distrubution successfully')
+            user_seed.objects.create(user = request.user, seed = 2,status = "paid", seed_value= 200 )
+        except:
+            messages.error(request, 'Distrubution is not successful')
     elif trx < trx_limit:
         messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
     elif usdt < seed_value:
@@ -104,8 +118,12 @@ def add_10_seed(request):
     usdt = get_usdt_user(request.user)
     print("Trx",trx,"usdt=", usdt)
     if usdt >= seed_value and trx > trx_limit:
-        distrubute_refer_bonus(request.user, 100)
-        messages.success(request, 'Distrubution successfully')
+        try:
+            distrubute_refer_bonus(request.user, seed_value)
+            messages.success(request, 'Distrubution successfully')
+            user_seed.objects.create(user = request.user, seed = 10,status = "paid", seed_value= seed_value )
+        except:
+            messages.error(request, 'Distrubution is not successful')
     elif trx < trx_limit:
         messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
     elif usdt < seed_value:
@@ -119,8 +137,12 @@ def add_100_seed(request):
     usdt = get_usdt_user(request.user)
     print("Trx",trx,"usdt=", usdt)
     if usdt >= seed_value and trx > trx_limit:
-        distrubute_refer_bonus(request.user, 100)
-        messages.success(request, 'Distrubution successfully')
+        try:
+            distrubute_refer_bonus(request.user, seed_value)
+            messages.success(request, 'Distrubution successfully')
+            user_seed.objects.create(user = request.user, seed = 100,status = "paid", seed_value= seed_value )
+        except:
+            messages.error(request, 'Distrubution is not successful')
     elif trx < trx_limit:
         messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
     elif usdt < seed_value:
@@ -134,8 +156,12 @@ def add_200_seed(request):
     usdt = get_usdt_user(request.user)
     print("Trx",trx,"usdt=", usdt)
     if usdt >= seed_value and trx > trx_limit:
-        distrubute_refer_bonus(request.user, 100)
-        messages.success(request, 'Distrubution successfully')
+        try:
+            distrubute_refer_bonus(request.user, seed_value)
+            messages.success(request, 'Distrubution successfully')
+            user_seed.objects.create(user = request.user, seed = 200,status = "paid", seed_value= seed_value )
+        except:
+            messages.error(request, 'Distrubution is not successful')
     elif trx < trx_limit:
         messages.error(request, 'Please add TRX there is only '+str(trx) + " in your account")
     elif usdt < seed_value:

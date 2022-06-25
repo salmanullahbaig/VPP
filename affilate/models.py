@@ -39,7 +39,7 @@ class User_transcations(models.Model):
     amount =  models.IntegerField(default=0)
     from_user =models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user')
     to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="to_user")
-    credited = models.BooleanField(default=True)
+    credited = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add= True)
     def __str__(self):
@@ -48,7 +48,7 @@ class User_transcations(models.Model):
 
 class user_seed(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    seed = models.CharField(max_length=200, unique=False)
+    seed = models.IntegerField(default=0)
     status = models.CharField(max_length=200, unique=False)
     seed_value =  models.IntegerField(default=0)
     paid = models.BooleanField(default=True)

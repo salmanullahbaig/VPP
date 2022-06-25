@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from tronpy import Tron
 from tronpy.keys import PrivateKey
 import time
-from affilate.models import User_transcations, user_wallet
+from affilate.models import User_transcations, user_wallet, user_seed
 
 company_username= 'superuser'
 superuser =  User.objects.get(username= company_username)
@@ -189,15 +189,21 @@ def transfer_usdt(from_user, to_user, amount):
     #amount_send, balance
 
     try:
+        is_trx_successful = False
+        User_transcations.objects.create(user= from_user, amount = amount, from_user = from_user, credited = False)
         txn = (contract.functions.transfer(to_adress,  amount_send).with_owner(from_adress)  # address of the private key
                .fee_limit(5_000_000)
                .build()
                .sign(priv_key))
         time.sleep(5)# waiting for the transfer
         #User_transcations.objects.create()
-
         result =  txn.broadcast().result()
+        is_trx_successful = True
     except Exception as e:
         print("issue is :", e)
+    if is_trx_successful:
+        User_transcations.objects.create(user= from_user, amount = amount, from_user = from_user, credited = True)
+    else:
+        User_transcations.objects.create(user= from_user, amount = amount, from_user = from_user, credited = False)
     print("Transfer completed")
     return result
