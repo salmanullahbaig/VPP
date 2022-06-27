@@ -475,5 +475,17 @@ class RestorePasswordDoneView(BasePasswordResetDoneView):
     template_name = 'accounts/restore_password_done.html'
 
 
+from django.contrib.auth import logout
+
+
 class LogOutView(LoginRequiredMixin, BaseLogoutView):
-    template_name = 'accounts/log_out.html'
+    def get(self, request):
+        logout(request)
+        print("get")
+        return redirect('accounts:log_in')
+
+    def post(self, request):
+        print("get")
+        # do something
+        return redirect("log_in")
+    #template_name = 'accounts/log_out.html'

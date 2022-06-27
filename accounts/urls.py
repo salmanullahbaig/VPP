@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib.auth import logout
 from .views import (
     LogInView, ResendActivationCodeView, RemindUsernameView,sign_up_ref, SignUpView, ActivateView, LogOutView,
     ChangeEmailView, ChangeEmailActivateView, ChangeProfileView, ChangePasswordView,
@@ -12,6 +12,7 @@ app_name = 'accounts'
 urlpatterns = [
     path('log-in/', LogInView.as_view(), name='log_in'),
     path('log-out/', LogOutView.as_view(), name='log_out'),
+
 
     path('resend/activation-code/', ResendActivationCodeView.as_view(), name='resend_activation_code'),
 

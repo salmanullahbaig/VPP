@@ -11,6 +11,23 @@
     <title>VVp</title>
 
 <style>
+
+.counting{
+    position: absolute;
+    right:27% ;
+    bottom: 50.5%;
+    color: yellow;
+    font-size: 100%;
+}
+
+.counting2{
+      font-size: 27px;
+      color:yellow;
+      position:absolute;
+      bottom:39%;
+      right: 15%;
+}
+
 *{
     padding:0;
     margin:0;
@@ -91,6 +108,14 @@
 
 @media only screen and (max-width: 650px) {
 
+
+.counting2{
+        display: none;
+
+    }
+    .counting{
+        display: none;
+    }
   .smallscreen{
     display: block;
   }
@@ -254,7 +279,19 @@ width: 405px;;
     <a href="{% url 'refer_link' %}"> <img src="{% static '\new_assets\Dashboard_Main\Go_To_Referral_Link.png'%}" alt=""></a>
   </div>
 
+  <div class="counting">
+            <h3>{{user_seed}}</h3>
+          </div>
+<div class="counting2">
+
+    <h6>
+    Seed Bought {{total_seed}},
+    Seed Available {{seed_left}}
+    </h6>
+        </div>
+
     </section>
+
 
 
 </body>

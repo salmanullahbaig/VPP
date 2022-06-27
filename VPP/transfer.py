@@ -190,17 +190,20 @@ def transfer_usdt(from_user, to_user, amount):
 
     try:
         is_trx_successful = False
-        User_transcations.objects.create(user= from_user, amount = amount, from_user = from_user, credited = False)
+        try:
+            User_transcations.objects.create(user= from_user, amount = amount, from_user = from_user, credited = False)
+        except Exception as e:
+            print("Error in  user transcation :", str(e))
         txn = (contract.functions.transfer(to_adress,  amount_send).with_owner(from_adress)  # address of the private key
-               .fee_limit(5_000_000)
+               .fee_limit(8_000_0000) #5_000_000
                .build()
                .sign(priv_key))
-        time.sleep(5)# waiting for the transfer
+        time.sleep(20)# waiting for the transfer
         #User_transcations.objects.create()
         result =  txn.broadcast().result()
         is_trx_successful = True
     except Exception as e:
-        print("issue is :", e)
+        print("issue is##### :", e)
     if is_trx_successful:
         User_transcations.objects.create(user= from_user, amount = amount, from_user = from_user, credited = True)
     else:

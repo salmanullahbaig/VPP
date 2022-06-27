@@ -17,7 +17,11 @@ class user_wallet(models.Model):
     def __str__(self):
         return f"{self.user.username}-{self.blance}"
     def get_api(self):
-        priv_key = PrivateKey(bytes.fromhex( self.secret_key ))
+        try:
+            priv_key = PrivateKey(bytes.fromhex( self.secret_key ))
+        except:
+            print("&&&&&&&&&&& Private key error")
+            priv_key =""
         keys = {'public_key': self.public_key , 'secret_key': priv_key}
         return keys
 
@@ -55,4 +59,4 @@ class user_seed(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add= True)
     def __str__(self):
-        return f"{self.user.username} amount = {self.amount}"
+        return f"{self.user.username} amount = {self.seed}"
