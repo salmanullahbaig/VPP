@@ -213,6 +213,7 @@ def sign_up_ref(request, *args , **kwargs):
             login(request, user)
 
             messages.success(request, _('You are successfully signed up!'))
+            return redirect('index')
             return render(request, 'index.html')
         else:
             messages.success(request, _('Form is not valid!'))
