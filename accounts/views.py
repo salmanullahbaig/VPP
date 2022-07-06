@@ -216,7 +216,7 @@ def sign_up_ref(request, *args , **kwargs):
             return render(request, 'index.html')
         else:
             messages.success(request, _('Form is not valid!'))
-            return render(request, 'accounts/sign_up.html', {'form': form})
+            return render(request, 'signup.html', {'form': form})
     else:
         form = SignUpForm()
         return render(request, 'signup.html', {'form': form})
@@ -482,10 +482,10 @@ class LogOutView(LoginRequiredMixin, BaseLogoutView):
     def get(self, request):
         logout(request)
         print("get")
-        return redirect('accounts:log_in')
+        return redirect("accounts:log_in")
 
     def post(self, request):
         print("get")
         # do something
-        return redirect("log_in")
+        return redirect("accounts:log_in")
     #template_name = 'accounts/log_out.html'

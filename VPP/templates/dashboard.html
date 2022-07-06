@@ -50,16 +50,7 @@
     top:20%;
     left:36%;
 }
-.buy-buttons a{
-   display:block;
-   text-decoration: none;
-   font-size: 13px;
-   color:yellow;
-   padding:.0rem;
-   font-weight: bold;
 
-
-}
 
 .db{
     position: absolute;
@@ -80,6 +71,16 @@
     width: 30%;
 
 }
+
+.button1{
+    position: absolute;
+    bottom:76%;
+    left:35%;
+}
+.button1 img{
+    width: 12%;
+}
+
 .username{
     position: absolute;
     bottom:54%;
@@ -98,59 +99,15 @@
 
 
 
-@media only screen and (max-width: 700px) {
 
 
- .smallscreen{
-    display: block;
- }
- .bigscreen{
-    display: none;
- }
-
-.buy-buttons{
-    left:67.3% !important;
-    top:19% !important;
-    z-index: 2;
-
-}
-.buy-buttons a{
-    padding: 10px;
-    margin: 10px;
-    font-size: 18px;
-}
-.db{
-    bottom:39% !important;
-    }
-.username{
-    top:8%;
-    width: 100%;
-    left: 65% !important;
-}
-.username h3{
-    font-size: 12px !important;
-}
-
-.logout{
-top:11%;
-left: 65%;
-z-index: 1;
-
-}
-.logout img{
-    width: 70px;
-}
-
-}
-
-
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1050px) and (min-device-width: 700px) {
 
     .buy-buttons{
         top:21.5%;
     }
     .buy-buttons a{
-        font-size: .8rem;
+
         padding-top:1px;
 
     }
@@ -175,9 +132,72 @@ z-index: 1;
 
 }
 
+.button1{
+    position: absolute;
+    bottom:76%;
+    left:35%;
+}
+.button1 img{
+    width: 10%;
+}
+
 }
 
 
+@media only screen and (max-width: 700px) {
+
+
+ .smallscreen{
+    display: block;
+ }
+ .bigscreen{
+    display: none;
+ }
+
+.buy-buttons{
+    left:67.3% !important;
+    top:19% !important;
+    z-index: 2;
+
+}
+.buy-buttons a{
+    padding: 10px;
+    margin: 10px;
+
+}
+.db{
+    bottom:39% !important;
+    }
+.username{
+    top:8%;
+    width: 100%;
+    left: 65% !important;
+}
+.username h3{
+    font-size: 12px !important;
+}
+
+.logout{
+top:11%;
+left: 65%;
+z-index: 1;
+
+}
+.logout img{
+    width: 70px;
+}
+
+.button1{
+top:20%;
+left: 66%;
+z-index: 1;
+
+}
+.button1 img{
+    width: 50px;
+}
+
+}
 
 
 </style>
@@ -214,19 +234,21 @@ z-index: 1;
         </div>
         {% endfor %}
 
-
+        <div class="button1">
+          <a href="{% url 'one_seed' %}"><img src="{% static '\new_assets\buyBtn.jpeg'%}" alt=""></a>
+        </div>
+<!--
         <div class="buy-buttons">
           <form class=""  method="post">
+              <a href="{% url 'one_seed' %}"> <img src="{% static '\new_assets\Dashboard_Main\Logout_button.png'%}" alt=""> </a>
 
-
-              <a href="{% url 'one_seed' %}">  <h4> Buy </h4> </a>
                 <a href="{% url 'two_seed' %}"><h4>Buy </h4></a>
                 <a href="{% url 'add_10_seed' %}"><h4>Buy </h4></a>
                 <a href="{% url 'add_100_seed' %}"><h4>Buy </h4></a>
-                <a href="{% url 'add_200_seed' %}"><h4>Buy </h4></a> </h3>
+                <a href="{% url 'add_200_seed' %}"><h4>Buy </h4></a>
                   </form>
         </div>
-
+  -->
           <div class="db">
            <a href="{% url 'index'%}"><img src="{% static '\new_assets\Dashboard_Main\Return_to_dashboard_button.png'%}" alt=""></a>
           </div>
